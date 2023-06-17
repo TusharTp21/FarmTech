@@ -1,0 +1,146 @@
+{% extends 'layout.html' %} {% block body %}
+
+<style>
+
+    html body {
+      background-color: rgb(206, 206, 228);
+
+      
+  }
+
+  
+</style>
+<!--Form Section-->
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: black">
+  <b>Find out the most suitable crop to grow in your farm</b>
+</h2>
+<br />
+
+<div
+  style="
+    width: 750px;
+    height: 50rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+  "
+>
+  <form method="POST" action="{{ url_for('crop_prediction') }}">
+    <div class="form-group">
+      
+      <div>
+      
+        <label for="Nitrogen" style="font-size: 17px; margin-right: 19px;"><b>Nitrogen</b></label>
+        <input
+          type="number"
+          id="Nitrogen"
+          name="nitrogen"
+          placeholder="Enter the value (example:50)"
+          style="font-weight: bold; margin: 5px 5px;"
+          required
+        />
+
+        <label for="Phosphorous" style="font-size: 17px; margin-right: 5px; margin-left: 5px;"
+        ><b>Phosphorous</b></label
+      >
+      <input
+        type="number"
+        id="Phosphorous"
+        name="phosphorous"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold; margin: 5px 5px;"
+        required
+      />
+      
+      </div>
+      
+      
+    </div>
+    <div class="form-group">
+      <div>
+      
+        <label for="Potassium" style="font-size: 17px; margin-right: 5px;"><b>Potassium</b></label>
+        <input
+          type="number"
+          id="Potassium"
+          name="Potassium"
+          placeholder="Enter the value (example:50)"
+          style="font-weight: bold; margin: 10px 10px;"
+          required
+        />
+
+        <label for="pH" style="font-size: 17px; margin-right: 5px;"
+        ><b>pH level</b></label
+      >
+      <input
+        type="number"
+        id="pH"
+        name="pH"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold; margin: 5px 38px;"
+        required
+      />
+      
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      
+      <label for="Rainfall" style="font-size: 17px; margin-right: 5px;"><b>Rainfall (in mm)</b></label>
+      <input
+        type="number"
+        step="0.01"
+        class="form-control"
+        id="Rainfall"
+        name="rainfall"
+        placeholder="Enter the value"
+        style="font-weight: bold; margin: 5px 5px;"
+        required
+      />
+
+      <label for="State" style="font-size: 17px; margin-right: 5px; "><b>State</b></label>
+      <select
+        onchange="print_city('state', this.selectedIndex);"
+        id="sts"
+        name="stt"
+        class="form-control"
+        style="font-weight: bold; color: black; margin: 5px 5px;"
+        
+        required
+      ></select>
+      <br />
+      <label for="City" style="font-size: 17px; margin-right: 5px;"><b>City</b></label>
+      <select
+        id="state"
+        class="form-control"
+        name="city"
+        style="font-weight: bold; color: black; margin: 5px 5px;"
+        required
+      ></select>
+      <script language="javascript">
+        print_state("sts");
+      </script>
+
+    </div>
+    
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn btn-info"
+        style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;"
+      >
+        Predict
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+<!-- Form section -->
+
+{% endblock %}
